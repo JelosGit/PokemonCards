@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Visited Cards</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let card of visitedCards" (click)="openPokemonDetail(card)">
+      <ion-thumbnail slot="start">
+        <img [src]="card.images.small" alt="Image of {{ card.name }}">
+      </ion-thumbnail>
+      <ion-label>{{ card.name }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
