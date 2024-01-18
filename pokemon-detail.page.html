@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pokemon Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <style>
+    .pokemon-image {
+      max-width: 30%;
+      max-height: 30%;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+  </style>
+
+  <div *ngIf="card">
+    <ion-img class="pokemon-image" [src]="card.images.large" alt="Large image of {{ card.name }}"></ion-img>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ card.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Type: {{ card.types?.join(', ') }}</p>
+        <p>HP: {{ card.hp }}</p>
+        <p>Weaknesses: {{ weaknessesDisplay }}</p>
+        <p>Retreat Cost: {{ card.retreatCost?.join(', ') }} ({{ card.convertedRetreatCost }})</p>
+        <p>Attacks:</p>
+        <ul>
+          <li *ngFor="let attackDisplay of attacksDisplay">
+            {{ attackDisplay }}
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!card">
+    <ion-label>No Pokémon details available.</ion-label>
+  </div>
+</ion-content>
+
+
