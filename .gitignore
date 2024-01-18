@@ -82,6 +82,8 @@ packages/vue/test/build/
 packages/react/test/build/
 
 # react router
+
+.angular/cache/
 packages/react-router/test/build/
 
 .npmrc
