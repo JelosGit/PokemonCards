@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Pokémon App</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/visited-cards">
+        Visited Cards
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-router-outlet></ion-router-outlet>
+
+<ion-content>
+  <ion-searchbar (ionChange)="searchCards($event)"></ion-searchbar>
+
+  <!-- Display this message if no cards are found -->
+  <div *ngIf="noCardsFound">
+    <ion-label>Sorry, we don't have that card.</ion-label>
+  </div>
+
+  <ion-list *ngIf="!noCardsFound">
+    <ion-item *ngFor="let card of cards" (click)="openPokemonDetail(card)">
+      <ion-thumbnail slot="start">
+        <img [src]="card.images.small" alt="Image of {{ card.name }}">
+      </ion-thumbnail>
+      <ion-label>{{ card.name }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
